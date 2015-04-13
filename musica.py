@@ -90,7 +90,6 @@ def descargaDisco(disco_id):
 
 def descargaCancion(cancion_id):
     track=buscaCancion(cancion_id)
-    print json.dumps(track)
     trackPos=remueveCaracteresEspeciales(track["position"])
     trackName=str(trackPos).zfill(2)+" - "+remueveCaracteresEspeciales(track["name"])
     albumName=remueveCaracteresEspeciales(track["album"]["name"])
