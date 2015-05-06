@@ -11,3 +11,6 @@ python musica.py
 Follow the on-screen instructions, and you´re on your way!
 
 Includes wget.py from http://bitbucket.org/techtonik/python-wget/
+
+# Remember!
+#### <i>Please only download the song when you have legal copyright to it.</i>
