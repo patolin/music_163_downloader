@@ -107,7 +107,7 @@ def descargaCancion(cancion_id):
         print "Error al descargar "+track["mp3Url"]
     #print json.dumps(track)
     print "*****************************************"
-    print "Descarga de la canción "+albumName+" completa!"
+    print "Descarga de la canciÃ³n "+albumName+" completa!"
     return True
 
 def remueveCaracteresEspeciales(texto):
@@ -123,9 +123,9 @@ def remueveCaracteresEspeciales(texto):
     texto=texto.replace('#', "")
     texto=texto.replace('@', "")
     texto=texto.replace('?', "")
-    texto=texto.replace('¿', "")
+    texto=texto.replace('Â¿', "")
     texto=texto.replace('!', "")
-    texto=texto.replace('Ç', "")
+    texto=texto.replace('Ã‡', "")
     return texto
 
     
@@ -137,12 +137,12 @@ cookie_opener.addheaders.append(('Referer', 'http://music.163.com'))
 urllib2.install_opener(cookie_opener)
 
 
-print "Descargas de música usando el API de http://music.163.com"
-print "1) Búsqueda por artista"
-print "2) Búsqueda por nombre de album"
-print "3) Búsqueda por nombre de canción"
+print "Descargas de mÃºsica usando el API de http://music.163.com"
+print "1) BÃºsqueda por artista"
+print "2) BÃºsqueda por nombre de album"
+print "3) BÃºsqueda por nombre de canciÃ³n"
 print ""
-opcion = int(raw_input('Seleccione una opción: '))
+opcion = int(raw_input('Seleccione una opciÃ³n: '))
 if (opcion==1):
     #busqueda por cancion
     print ""
@@ -152,7 +152,7 @@ if (opcion==1):
         i=1
         dictArtistas={}
         for a in jsonArtista['artists']:
-            print '[%2d] Id: %d\tNombre: %s' % (i, a['id'], a['name'])
+            print '[%2d] \tNombre: %s' % (i, a['name'])
             dictArtistas.update({str(i):a['id']})
             i=i+1
         print ""
@@ -164,12 +164,12 @@ if (opcion==1):
         i=1
         dictDiscos={}
         for a in jsonDiscos:
-            print '[%3d] Id: %d\tNombre: %s' % (i, a['id'], a['name'])
+            print '[%3d] \tNombre: %s' % (i, a['name'])
             dictDiscos.update({str(i):a['id']})
             i=i+1
         numDisco=str(raw_input('Ingrese el numero del disco a descargar, o 0 para descargar todos: '))
         if (numDisco=="0"):
-            print "Descargando discografía completa"
+            print "Descargando discografÃ­a completa"
             idDiscos=dictDiscos.values()
             print idDiscos
             for disco in idDiscos:
@@ -178,7 +178,7 @@ if (opcion==1):
             descargaDisco(dictDiscos[str(numDisco)])
         
     else:
-        print "No existen resultados para la búsqueda de: "+query
+        print "No existen resultados para la bÃºsqueda de: "+query
 elif (opcion==2):
     #busqueda por disco
     query=raw_input('Ingrese el nombre del disco: ')
@@ -188,7 +188,7 @@ elif (opcion==2):
         i=1
         dictDiscos={}
         for a in jsonDisco["albums"]:
-            print '[%3d] Id: %d\tNombre: %s - %s' % (i, a['id'], a['name'], a['artist']['name'])
+            print '[%3d] \tNombre: %s - %s' % (i, a['name'], a['artist']['name'])
             dictDiscos.update({str(i):a['id']})
             i=i+1
         numDisco=str(raw_input('Ingrese el numero del disco a descargar: '))
@@ -202,7 +202,7 @@ elif (opcion==3):
         i=1
         dictCanciones={}
         for a in jsonCancion['songs']:
-            print '[%3d] Id: %d\tNombre: %s' % (i, a['id'], a['name']+" - "+a['album']['name']+" ["+a['artists'][0]['name']+"]")
+            print '[%3d] \tNombre: %s' % (i, a['name']+" - "+a['album']['name']+" ["+a['artists'][0]['name']+"]")
             dictCanciones.update({str(i):a['id']})
             i=i+1
     numCancion=str(raw_input('Ingrese el numero de la cancion a descargar: '))   
